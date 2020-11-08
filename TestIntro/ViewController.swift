@@ -49,10 +49,11 @@ extension ViewController {
         tableView.scrollToRow(at: self.arrayIntro.first!.1, at: .middle, animated: true)
         
         let when = DispatchTime.now() + 0.5
-        DispatchQueue.main.asyncAfter(deadline: when, execute: { () -> Void in
-            let cell = self.tableView.cellForRow(at: self.arrayIntro.first!.1)
+        DispatchQueue.main.asyncAfter(deadline: when, execute: { () -> Void in            
+            let rectOfCell = self.tableView.rectForRow(at: self.arrayIntro.first!.1)
+            let rectOfCellInSuperview = self.tableView.convert(rectOfCell, to: self.tableView.superview)
             
-            let introFiltrViewController = IntroFiltrViewController(arrayIntro: self.arrayIntro, yPosition: cell!.centerYAnchor, delegate: self)
+            let introFiltrViewController = IntroFiltrViewController(arrayIntro: self.arrayIntro, yPosition: rectOfCellInSuperview.origin.y + rectOfCellInSuperview.size.height, delegate: self)
             self.delegate = introFiltrViewController
             introFiltrViewController.modalTransitionStyle = .crossDissolve
             introFiltrViewController.modalPresentationStyle = .overCurrentContext

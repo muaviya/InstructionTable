@@ -13,6 +13,7 @@ protocol ShowIntroDelegate: class {
 
 class IntroFiltrViewController: UIViewController {
     //MARK: -Outlets
+    @IBOutlet weak var yConstraint: NSLayoutConstraint?
     @IBOutlet weak var upTriangle: UIView!
     @IBOutlet weak var downTriangle: UIView!
     @IBOutlet weak var mainView: UIView!
@@ -26,13 +27,13 @@ class IntroFiltrViewController: UIViewController {
     //MARK: -Variables
     weak var delegate: TableScrollDelegate?
     let arrayIntro: [(String, IndexPath)]
-    let yPosition: NSLayoutYAxisAnchor
+    let yPosition: CGFloat
     var index = 0
     
     var triangleLayerUp = CAShapeLayer()
     var triangleLayerDown = CAShapeLayer()
 
-    init(arrayIntro: [(String, IndexPath)], yPosition: NSLayoutYAxisAnchor , delegate: TableScrollDelegate?) {
+    init(arrayIntro: [(String, IndexPath)], yPosition: CGFloat , delegate: TableScrollDelegate?) {
         self.delegate = delegate
         self.arrayIntro = arrayIntro
         self.yPosition = yPosition
@@ -49,8 +50,11 @@ class IntroFiltrViewController: UIViewController {
 
         titleLbl.text = arrayIntro.first!.0
         
-        self.mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant:70).isActive = true
+//        self.mainView.translatesAutoresizingMaskIntoConstraints = false
+//        mainView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant:70).isActive = true
+        
+        print("yPosition = ", yPosition)
+        yConstraint?.constant = CGFloat(yPosition)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -112,21 +116,22 @@ extension IntroFiltrViewController: ShowIntroDelegate {
             
             triangleLayerDown.removeFromSuperlayer()
             triangleLayerUp.removeFromSuperlayer()
-            
-            var resultPosition = yPosition - 255
-            if index > 6 {
-                resultPosition = yPosition - 275
-            }
 
-            mainView.topAnchor.constraint(equalTo: self.view.topAnchor, constant:resultPosition).isActive = true
+            mainView.translatesAutoresizingMaskIntoConstraints = false
+            if yConstraint != nil {
+                yConstraint!.isActive = false
+            }
+            mainView.bottomAnchor.constraint(equalTo: self.view.topAnchor, constant:yPosition).isActive = true
 
             let when = DispatchTime.now() + 0.5
             DispatchQueue.main.asyncAfter(deadline: when, execute: { () -> Void in
                 self.drawTriangle(up: false, triangleLayer: self.triangleLayerDown)
             })
         } else {
-            let resultPosition = yPosition + 200
-            mainView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant:resultPosition).isActive = true
+            let when = DispatchTime.now() + 0.5
+            DispatchQueue.main.asyncAfter(deadline: when, execute: { () -> Void in
+                self.drawTriangle(up: true, triangleLayer: self.triangleLayerUp)
+            })
         }
         self.view.layoutIfNeeded()
     }
