@@ -12,7 +12,7 @@ protocol ShowIntroDelegate: class {
 }
 
 class IntroFiltrViewController: UIViewController {
-    //MARK: -Outlets
+    //MARK: - Outlets
     @IBOutlet weak var yConstraint: NSLayoutConstraint?
     @IBOutlet weak var upTriangle: UIView!
     @IBOutlet weak var downTriangle: UIView!
@@ -24,7 +24,7 @@ class IntroFiltrViewController: UIViewController {
         }
     }
     
-    //MARK: -Variables
+    //MARK: - Variables
     weak var delegate: TableScrollDelegate?
     let arrayIntro: [(String, IndexPath)]
     let yPosition: CGFloat
@@ -44,16 +44,12 @@ class IntroFiltrViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: -Life cycle
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleLbl.text = arrayIntro.first!.0
-        
-//        self.mainView.translatesAutoresizingMaskIntoConstraints = false
-//        mainView.topAnchor.constraint(equalTo: self.view.centerYAnchor, constant:70).isActive = true
-        
-        print("yPosition = ", yPosition)
+            
         yConstraint?.constant = CGFloat(yPosition)
     }
     
@@ -63,24 +59,28 @@ class IntroFiltrViewController: UIViewController {
     }
 }
 
-//MARK: -Other func
-extension IntroFiltrViewController {
-}
 
-//MARK: -Actions
+//MARK: - Actions
 extension IntroFiltrViewController {
     @IBAction func closeView() {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func tapViewGesture(_ sender: Any) {
         index += 1
-        if arrayIntro.indices.contains(index) {
-            delegate?.scrollTableFromIntro(indexPath: arrayIntro[index].1)
+        
+        if index >= arrayIntro.count {
+            index = 0
+            dismiss(animated: true, completion: nil)
+        } else {
+            if arrayIntro.indices.contains(index)  {
+                delegate?.scrollTableFromIntro(indexPath: arrayIntro[index].1)
+            }
         }
     }
 }
 
-//MARK: -Triangle
+//MARK: - Triangle
 extension IntroFiltrViewController {
     func drawTriangle(up:Bool, triangleLayer: CAShapeLayer) {
         
@@ -107,13 +107,13 @@ extension IntroFiltrViewController {
     }
 }
 
+//MARK: - ShowIntroDelegate
 extension IntroFiltrViewController: ShowIntroDelegate {
     func changeIntro(yPosition: CGFloat) {
         titleLbl.text = arrayIntro[index].0
         self.mainView.translatesAutoresizingMaskIntoConstraints = false
 
         if index > 5 {
-            
             triangleLayerDown.removeFromSuperlayer()
             triangleLayerUp.removeFromSuperlayer()
 

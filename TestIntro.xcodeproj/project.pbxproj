@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE5FDE392553EB2A005D148E /* IntroFiltrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5FDE372553EB2A005D148E /* IntroFiltrViewController.swift */; };
 		CE5FDE3A2553EB2A005D148E /* IntroFiltrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5FDE382553EB2A005D148E /* IntroFiltrViewController.xib */; };
-		CEBCD68E2557BA160070D4B5 /* IntroFiltrViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBCD68D2557BA160070D4B5 /* IntroFiltrViewController1.swift */; };
 		CECCF24E25501108001B62D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF24D25501108001B62D8 /* AppDelegate.swift */; };
 		CECCF25025501108001B62D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF24F25501108001B62D8 /* SceneDelegate.swift */; };
 		CECCF25225501108001B62D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCF25125501108001B62D8 /* ViewController.swift */; };
@@ -22,7 +21,6 @@
 		85AA57031A488EB5990551D6 /* Pods_TestIntro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestIntro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5FDE372553EB2A005D148E /* IntroFiltrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFiltrViewController.swift; sourceTree = "<group>"; };
 		CE5FDE382553EB2A005D148E /* IntroFiltrViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroFiltrViewController.xib; sourceTree = "<group>"; };
-		CEBCD68D2557BA160070D4B5 /* IntroFiltrViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFiltrViewController1.swift; sourceTree = "<group>"; };
 		CECCF24A25501108001B62D8 /* TestIntro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestIntro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCF24D25501108001B62D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECCF24F25501108001B62D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 				CECCF24D25501108001B62D8 /* AppDelegate.swift */,
 				CECCF24F25501108001B62D8 /* SceneDelegate.swift */,
 				CECCF25125501108001B62D8 /* ViewController.swift */,
-				CEBCD68D2557BA160070D4B5 /* IntroFiltrViewController1.swift */,
 				CE5FDE372553EB2A005D148E /* IntroFiltrViewController.swift */,
 				CE5FDE382553EB2A005D148E /* IntroFiltrViewController.xib */,
 				CECCF25325501108001B62D8 /* Main.storyboard */,
@@ -187,7 +184,6 @@
 				CECCF25225501108001B62D8 /* ViewController.swift in Sources */,
 				CE5FDE392553EB2A005D148E /* IntroFiltrViewController.swift in Sources */,
 				CECCF24E25501108001B62D8 /* AppDelegate.swift in Sources */,
-				CEBCD68E2557BA160070D4B5 /* IntroFiltrViewController1.swift in Sources */,
 				CECCF25025501108001B62D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
