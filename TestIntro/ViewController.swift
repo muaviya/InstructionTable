@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Instructions
 
 protocol TableScrollDelegate: class {
     func scrollTableFromIntro(indexPath: IndexPath)
